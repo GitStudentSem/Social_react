@@ -1,1 +1,31 @@
+.dialogs {
+  display: flex;
+}
 
+.dialog {
+  display: flex;
+  padding: 10px;
+}
+.messages {
+}
+.active {
+  background-color: darkcyan;
+  border-radius: 20px;
+}
+.message {
+}
+.line {
+  /* Высоту подредактировать, цифра вята с потолка */
+  height: 92vh;
+  width: 2px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 0 20px #fff;
+  margin: 0 20px;
+}
+.avatar {
+  margin-right: 10px;
+}
+.name {
+  margin: 0;
+}

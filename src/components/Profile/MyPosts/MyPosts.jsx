@@ -9,9 +9,8 @@ const MyPosts = () => {
         <button>Post</button>
         <div>New post</div>
         <div className={s.posts}>
-          <Post message="Первый нах" likeCount="12" />
-          <Post message="Второй нах" likeCount="52" />
-          <Post message="первоход" likeCount="1111" />
+          <Post message="Первый комментарий" likeCount="12" />
+          <Post message="Второй комментарий" likeCount="52" />
           <Post
             message="Далеко-далеко, за словесными горами в стране гласных и согласных живут рыбные тексты"
             likeCount=""
