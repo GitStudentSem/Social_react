@@ -9,7 +9,7 @@ const MyPosts = () => {
         <button>Post</button>
         <div>New post</div>
         <div className={s.posts}>
-          <Post />
+          <Post message="Первый нах" />
           <Post />
           <Post />
           <Post />
