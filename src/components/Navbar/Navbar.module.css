@@ -10,12 +10,12 @@
 .item:last-child {
   margin-top: 50px;
 }
-.item.active {
-  color: darkcyan;
-}
 .link {
   color: #fff;
   font-size: 20px;
   cursor: pointer;
   text-decoration: none;
+}
+.active {
+  color: darkcyan;
 }

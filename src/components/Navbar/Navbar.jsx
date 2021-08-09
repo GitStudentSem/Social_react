@@ -1,32 +1,38 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={s.nav}>
       <div className={`${s.item} ${s.active}`}>
-        <a className={s.link} href="/profile">
+        {/* вместо "а" стоят "NavLink" для изменения контента без перезагрузки страницы
+        вместо "href" используется "to" */}
+
+        {/* "NavLink" автоматически дабавляет класс 'active'
+        activeClassName={s.active} прописывает его статически как он прописан в стилях  */}
+        <NavLink className={s.link} to="/profile" activeClassName={s.active}>
           Profile
-        </a>
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a className={s.link} href="/dialogs">
+        <NavLink className={s.link} to="/dialogs" activeClassName={s.active}>
           Messages
-        </a>
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a className={s.link} href="/news">
+        <NavLink className={s.link} to="/news" activeClassName={s.active}>
           News
-        </a>
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a className={s.link} href="/music">
+        <NavLink className={s.link} to="/music" activeClassName={s.active}>
           Music
-        </a>
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a className={s.link} href="/settings">
+        <NavLink className={s.link} to="/settings" activeClassName={s.active}>
           Settings
-        </a>
+        </NavLink>
       </div>
     </nav>
   );
