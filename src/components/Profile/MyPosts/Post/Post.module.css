@@ -2,7 +2,7 @@
   color: #fff;
   padding: 10px 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   max-width: 800px;
   border: 2px solid white;
   border-radius: 15px;
@@ -19,6 +19,12 @@
   width: 90%;
 }
 .like {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.like_button {
   height: 30px;
   width: 30px;
   background-image: url(./like.svg);
@@ -26,4 +32,9 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+  padding-left: 15px;
+}
+.like_count {
+  color: #fff;
+  margin: 0;
 }
