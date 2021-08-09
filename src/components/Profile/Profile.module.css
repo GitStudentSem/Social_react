@@ -1,0 +1,12 @@
+.content {
+  grid-area: c;
+  background-color: black;
+}
+/*Картинка в шапке контента*/
+.image {
+  width: 100%;
+  height: 200px;
+  background-image: url(./imageTop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
