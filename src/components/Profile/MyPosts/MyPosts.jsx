@@ -2,7 +2,8 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 const MyPosts = () => {
-  let postData = [
+  // Исходная база данных для каждого поста на стене
+  let posts = [
     { id: 1, message: "Первый комментарий", likesCount: 12 },
     { id: 2, message: "Второй комментарий", likesCount: 0 },
     {
@@ -13,6 +14,13 @@ const MyPosts = () => {
     },
     { id: 4, message: "Какая-то запись на стене профиля", likesCount: 1177 },
   ];
+
+  // Принимает на вход массив с данными posts и преобразует его в массив компонент Post
+  // Каждый элемент массива имеет название p (сокр. от posts)
+  let postsElement = posts.map((p) => (
+    <Post message={p.message} likesCount={p.likesCount} />
+  ));
+
   return (
     <div className={s.content}>
       <div>
@@ -25,22 +33,8 @@ const MyPosts = () => {
           <button className={s.send}>Post</button>
         </div>
         <div className={s.posts}>
-          <Post
-            message={postData[0].message}
-            likesCount={postData[0].likesCount}
-          />
-          <Post
-            message={postData[1].message}
-            likesCount={postData[1].likesCount}
-          />
-          <Post
-            message={postData[2].message}
-            likesCount={postData[2].likesCount}
-          />
-          <Post
-            message={postData[3].message}
-            likesCount={postData[3].likesCount}
-          />
+          {/* Этот массив компонент строится через map из массива данных posts*/}
+          {postsElement}
         </div>
       </div>
     </div>

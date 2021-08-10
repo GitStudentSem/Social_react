@@ -27,14 +27,17 @@ const Message = (props) => {
 };
 
 const Dialogs = (props) => {
-  let dialogsData = [
+  // Исходная база данных для пользователей в диалогах
+  let dialogs = [
     { id: 1, name: "Сырный Творог" },
     { id: 2, name: "Олег Гусин" },
     { id: 3, name: "Гусь Олегович" },
     { id: 4, name: "Самолет Боингов" },
     { id: 5, name: "Азимбег Мамбусабутов" },
   ];
-  let messagesData = [
+
+  // Исходная база данных для каждого сообщения
+  let messages = [
     { id: 1, message: "Простое сообщение" },
     {
       id: 2,
@@ -43,20 +46,27 @@ const Dialogs = (props) => {
     },
     { id: 3, message: "Подправил, теперь все выглядит около дела" },
   ];
+
+  // Принимает на вход массив с данными dialogs и преобразует его в массив компонент dialogsElements
+  // Каждый элемент массива имеет название d (сокр. от dialogs)
+  let dialogsElements = dialogs.map((d) => (
+    <DialogItem name={d.name} id={d.id} />
+  ));
+
+  // Принимает на вход массив с данными messages и преобразует его в массив компонент messagesElements
+  // Каждый элемент массива имеет название {m (сокр. от messages)
+  let messagesElements = messages.map((m) => <Message message={m.message} />);
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs_item}>
-        <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-        <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
-        <DialogItem name={dialogsData[2].name} id={dialogsData[2].id} />
-        <DialogItem name={dialogsData[3].name} id={dialogsData[3].id} />
-        <DialogItem name={dialogsData[4].name} id={dialogsData[4].id} />
+        {/* Этот массив компонент строится через map из массива данных dialogs*/}
+        {dialogsElements}
       </div>
       <div className={s.line}></div>
       <div className={s.messages}>
-        <Message message={messagesData[0].message} />
-        <Message message={messagesData[1].message} />
-        <Message message={messagesData[2].message} />
+        {/* Этот массив компонент строится через map из массива данных messages*/}
+        {messagesElements}
       </div>
     </div>
   );
