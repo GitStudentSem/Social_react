@@ -6,7 +6,7 @@ const MyPosts = () => {
     <div className={s.content}>
       <div>
         <textarea></textarea>
-        <button>Post</button>
+        <button>Add Post</button>
         <div>New post</div>
         <div className={s.posts}>
           <Post message="Первый комментарий" likeCount="12" />

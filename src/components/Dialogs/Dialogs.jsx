@@ -3,48 +3,42 @@ import { NavLink } from "react-router-dom";
 import s from "./Dialogs.module.css";
 import avatar from "./user.svg";
 
+const DialogItem = (props) => {
+  let path = `/dialogs/${props.id}`;
+
+  return (
+    <NavLink className={s.dialog} to={path} activeClassName={s.active}>
+      <img src={avatar} alt={"user avatar"} className={s.avatar} />
+      <p className={s.name}>{props.name}</p>
+    </NavLink>
+  );
+};
+
+const Message = (props) => {
+  return <div className={s.message}>{props.message}</div>;
+};
+
 const Dialogs = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs_item}>
-        <NavLink
-          className={s.dialog}
-          to="/dialogs/1"
-          activeClassName={s.active}
-        >
-          <img src={avatar} alt={"user avatar"} className={s.avatar} />
-          <p className={s.name}>Первый пользователь</p>
-        </NavLink>
-        <NavLink
-          className={s.dialog}
-          to="/dialogs/2"
-          activeClassName={s.active}
-        >
-          <img src={avatar} alt={"user avatar"} className={s.avatar} />
-          <p className={s.name}>Второй пользователь</p>
-        </NavLink>
-        <NavLink
-          className={s.dialog}
-          to="/dialogs/3"
-          activeClassName={s.active}
-        >
-          <img src={avatar} alt={"user avatar"} className={s.avatar} />
-          <p className={s.name}>Третий пользователь</p>
-        </NavLink>
-        <NavLink
-          className={s.dialog}
-          to="/dialogs/4"
-          activeClassName={s.active}
-        >
-          <img src={avatar} alt={"user avatar"} className={s.avatar} />
-          <p className={s.name}>Четвертый пользователь</p>
-        </NavLink>
+        <DialogItem name="Сырный Творог" id="1" />
+        <DialogItem name="Олег Гусин" id="2" />
+        <DialogItem name="Гусь Олегович" id="3" />
+        <DialogItem name="Самолет Боингов" id="4" />
+        <DialogItem name="Азимбег Мамбусабутов" id="5" />
+        <DialogItem
+          name="У Меня Очеь Длинное Имя Что Же делать Как Же Жить"
+          id="6"
+        />
+        <DialogItem name="У" id="7" />
+        <DialogItem name="Имя Пользователя" id="8" />
       </div>
       <div className={s.line}></div>
       <div className={s.messages}>
-        <div className={s.message}>Сообщение 1</div>
-        <div className={s.message}>Сообщение 2</div>
-        <div className={s.message}>Сообщение 3</div>
+        <Message message="Простое сообщение" />
+        <Message message='Здесь очень длинное сообщение, посмотри на верстку, видишь как она поехала? Это нужно исправлять, что бы все было ровно и не сдвигалось, попробуй задать максимальную ширину блока, а слишком длинное имя да, да я про тебя говорю "У Меня Очеь Длинное Имя Что Же делать Как Же Жить" нужно будет заменить на троеточие в конце' />
+        <Message message="Сообщение обычной длины которое обычно пишут" />
       </div>
     </div>
   );
