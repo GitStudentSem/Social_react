@@ -15,7 +15,15 @@ const DialogItem = (props) => {
 };
 
 const Message = (props) => {
-  return <div className={s.message}>{props.message}</div>;
+  return (
+    <div className={s.message}>
+      <div className={s.user}>
+        <img src={avatar} alt={"user avatar"} className={s.avatar} />
+        <p className={s.name}>Имя Фамилия</p>
+      </div>
+      <p className={s.message_text}>{props.message}</p>
+    </div>
+  );
 };
 
 const Dialogs = (props) => {
@@ -38,7 +46,7 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         <Message message="Простое сообщение" />
         <Message message='Здесь очень длинное сообщение, посмотри на верстку, видишь как она поехала? Это нужно исправлять, что бы все было ровно и не сдвигалось, попробуй задать максимальную ширину блока, а слишком длинное имя да, да я про тебя говорю "У Меня Очеь Длинное Имя Что Же делать Как Же Жить" нужно будет заменить на троеточие в конце' />
-        <Message message="Сообщение обычной длины которое обычно пишут" />
+        <Message message="Подправил, теперь все выглядит около дела" />
       </div>
     </div>
   );
