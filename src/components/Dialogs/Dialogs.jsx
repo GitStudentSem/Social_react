@@ -1,30 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import s from "./Dialogs.module.css";
-import avatar from "./user.svg";
-
-const DialogItem = (props) => {
-  let path = `/dialogs/${props.id}`;
-
-  return (
-    <NavLink className={s.dialog} to={path} activeClassName={s.active}>
-      <img src={avatar} alt={"user avatar"} className={s.avatar} />
-      <p className={s.name}>{props.name}</p>
-    </NavLink>
-  );
-};
-
-const Message = (props) => {
-  return (
-    <div className={s.message}>
-      <div className={s.user}>
-        <img src={avatar} alt={"user avatar"} className={s.avatar} />
-        <p className={s.name}>Имя Фамилия</p>
-      </div>
-      <p className={s.message_text}>{props.message}</p>
-    </div>
-  );
-};
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
   // Исходная база данных для пользователей в диалогах
@@ -54,7 +31,7 @@ const Dialogs = (props) => {
   ));
 
   // Принимает на вход массив с данными messages и преобразует его в массив компонент messagesElements
-  // Каждый элемент массива имеет название {m (сокр. от messages)
+  // Каждый элемент массива имеет название m (сокр. от messages)
   let messagesElements = messages.map((m) => <Message message={m.message} />);
 
   return (
