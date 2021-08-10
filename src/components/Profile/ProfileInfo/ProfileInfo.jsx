@@ -6,7 +6,7 @@ const ProfileInfo = () => {
   return (
     <div>
       <div className={s.image}></div>
-      <div>
+      <div className={s.user}>
         <img src={avatar} alt={"user avatar"} className={s.avatar} />
         <p className={s.name}>Имя Фамилия</p>
       </div>
