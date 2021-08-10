@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-// в props попадают: posts
+
 const MyPosts = (props) => {
   // Принимает на вход массив с данными posts и преобразует его в массив компонент Post
   // Каждый элемент массива имеет название p (сокр. от posts)
-  let postsElement = props.posts.map((p) => (
+  let postsElement = props.state.map((p) => (
     <Post message={p.message} likesCount={p.likesCount} />
   ));
 

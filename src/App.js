@@ -11,7 +11,6 @@ import Profile from "./components/Profile/Profile";
 // необходимо установить пакет react-router-dom
 import { BrowserRouter, Route } from "react-router-dom";
 
-// в props попадают: posts, dialogs, messages
 const App = (props) => {
   return (
     // BrowserRouter необходимая обертка для работы Router,
@@ -26,13 +25,11 @@ const App = (props) => {
           {/* Route принимает 2 метода:  render и component через render можно передать props*/}
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs dialogs={props.dialogs} messages={props.messages} />
-            )}
+            render={() => <Dialogs state={props.state.dialogsPage} />}
           />
           <Route
             path="/profile"
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile state={props.state.profilePage} />}
           />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
