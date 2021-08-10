@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import avatar from "./user.svg";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
   return (
     <div>
       <div className={s.image}></div>

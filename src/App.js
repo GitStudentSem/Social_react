@@ -11,7 +11,8 @@ import Profile from "./components/Profile/Profile";
 // необходимо установить пакет react-router-dom
 import { BrowserRouter, Route } from "react-router-dom";
 
-const App = () => {
+// в props попадают: posts, dialogs, messages
+const App = (props) => {
   return (
     // BrowserRouter необходимая обертка для работы Router,
     //необходимо установить пакет react-router-dom и импортировать его
@@ -21,12 +22,21 @@ const App = () => {
         <Navbar />
         <div className="app-wrapper-content">
           {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
-        и импортировать его */}
-          <Route path="/dialogs" component={Dialogs} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
+            и импортировать его */}
+          {/* Route принимает 2 метода:  render и component через render можно передать props*/}
+          <Route
+            path="/dialogs"
+            render={() => (
+              <Dialogs dialogs={props.dialogs} messages={props.messages} />
+            )}
+          />
+          <Route
+            path="/profile"
+            render={() => <Profile posts={props.posts} />}
+          />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
         </div>
       </div>
     </BrowserRouter>
