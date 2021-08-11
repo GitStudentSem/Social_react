@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
+import RecentDialogs from "./recentDialogs/RecentDialogs";
 const Navbar = (props) => {
+  let recentDialogsElements = props.state.dialogs.map((d) => (
+    <RecentDialogs name={d.name} id={d.id} />
+  ));
   return (
     <nav className={s.nav}>
       <div className={`${s.item} ${s.active}`}>
@@ -34,6 +38,8 @@ const Navbar = (props) => {
           Settings
         </NavLink>
       </div>
+      <h3 className={s.title}>Recent Dialogues</h3>
+      {recentDialogsElements}
     </nav>
   );
 };

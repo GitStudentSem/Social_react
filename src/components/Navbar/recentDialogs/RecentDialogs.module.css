@@ -1,0 +1,26 @@
+.dialog {
+  display: flex;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  max-width: 200px;
+  transition: all 0.5s;
+}
+.dialog:hover {
+  box-shadow: 0 0 10px #fff;
+}
+.active {
+  background-color: darkcyan;
+  box-shadow: 0 0 10px #fff;
+}
+.avatar {
+  margin-right: 10px;
+}
+.name {
+  margin: 0;
+  white-space: nowrap; /* Отменяю перенос текста */
+  overflow: hidden; /* Скрываю лишний текст*/
+  text-overflow: ellipsis; /*Троеточие в конце имени*/
+}

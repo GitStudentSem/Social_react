@@ -18,7 +18,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar state={props.state.sidebar} />
         <div className="app-wrapper-content">
           {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
             и импортировать его */}
