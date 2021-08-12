@@ -9,6 +9,13 @@ const MyPosts = (props) => {
     <Post message={p.message} likesCount={p.likesCount} />
   ));
 
+  let newPostElement = React.createRef();
+
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    alert(text);
+  };
+
   return (
     <div className={s.content}>
       <div>
@@ -17,8 +24,11 @@ const MyPosts = (props) => {
             type="text"
             className={s.input}
             placeholder="input your message"
+            ref={newPostElement}
           />
-          <button className={s.send}>Post</button>
+          <button className={s.send} onClick={addPost}>
+            Post
+          </button>
         </div>
         <div className={s.posts}>
           {/* Этот массив компонент строится через map из массива данных posts*/}

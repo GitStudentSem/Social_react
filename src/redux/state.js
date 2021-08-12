@@ -15,12 +15,10 @@ let state = {
 
   dialogsPage: {
     messages: [
-      { id: 1, message: "Простое сообщение" },
-      {
-        id: 2,
-        message: "asad",
-      },
-      { id: 3, message: "Подправил, теперь все выглядит около дела" },
+      { id: 1, message: "Простое сообщение 1" },
+      { id: 2, message: "Простое сообщение 2" },
+      { id: 3, message: "Простое сообщение 3" },
+      { id: 4, message: "Простое сообщение 4" },
     ],
 
     dialogs: [

@@ -1,8 +1,12 @@
-.dialogs {
+.dialogs_wrapper {
   display: flex;
 }
-
-.dialog {
+.line {
+  height: 500px;
+  width: 3px;
+  background-color: #fff;
+}
+.user {
   display: flex;
   padding: 5px 10px;
   color: #fff;
@@ -12,44 +16,77 @@
   max-width: 200px;
   transition: all 0.5s;
 }
-.dialog:hover {
+.user:hover {
   box-shadow: 0 0 10px #fff;
-}
-.messages {
-  padding: 0 20px 0 0;
 }
 .active {
   background-color: darkcyan;
   box-shadow: 0 0 10px #fff;
 }
-.message {
-  border: 2px solid #fff;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-  max-width: 700px;
-}
-.message_text {
+.name {
   margin: 0;
-}
-.line {
-  /* Высоту подредактировать, цифра вята с потолка */
-  height: 92vh;
-  width: 3px;
-  background-color: #fff;
-  box-shadow: 0 0 20px #fff;
-  margin: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .avatar {
   margin-right: 10px;
 }
-.name {
-  margin: 0;
-  white-space: nowrap; /* Отменяю перенос текста */
-  overflow: hidden; /* Скрываю лишний текст*/
-  text-overflow: ellipsis; /*Троеточие в конце имени*/
+.line {
+  margin: 0 20px;
+  box-shadow: 0 0 10px #fff;
 }
-.user {
+.message_wrapper {
+  width: 700px;
+}
+.message {
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: max-content;
+}
+.message_user {
   display: flex;
-  margin-bottom: 10px;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  max-width: 200px;
+  border: 2px solid #fff;
+}
+.message_text {
+  margin: 0;
+}
+.input_wrapper {
+  width: 100%;
+  display: flex;
+}
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  border-radius: 10px 0 0 10px;
+  color: #fff;
+  outline: none;
+  transition: all 0.7s;
+}
+.input:focus {
+  box-shadow: 0 0 7px #fff;
+}
+.send {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 0 10px 10px 0;
+  transition: all 0.7s;
+  cursor: pointer;
+}
+.send:hover {
+  background-color: #fff;
+  box-shadow: 0 0 20px #fff;
+  color: #000;
 }

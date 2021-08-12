@@ -16,16 +16,30 @@ const Dialogs = (props) => {
     <Message message={m.message} />
   ));
 
+  let sendMessageElement = React.createRef();
+
+  let sendMessage = () => {
+    let text = sendMessageElement.current.value;
+    alert(text);
+  };
+
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogs_item}>
-        {/* Этот массив компонент строится через map из массива данных dialogs*/}
-        {dialogsElements}
-      </div>
+    <div className={s.dialogs_wrapper}>
+      <div className={s.users}>{dialogsElements}</div>
       <div className={s.line}></div>
-      <div className={s.messages}>
-        {/* Этот массив компонент строится через map из массива данных messages*/}
-        {messagesElements}
+      <div className={s.dialog_window}>
+        <div className={s.message_wrapper}>{messagesElements}</div>
+        <div className={s.input_wrapper}>
+          <input
+            type="text"
+            className={s.input}
+            placeholder="input your message"
+            ref={sendMessageElement}
+          />
+          <button className={s.send} onClick={sendMessage}>
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
