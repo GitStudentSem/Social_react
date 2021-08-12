@@ -21,7 +21,7 @@ const Dialogs = (props) => {
   let sendMessage = () => {
     props.sendMessage();
     // Костыльное решение, по какой-то причине данные
-    // зачищаются в state, но поле для ввода не зачищиется
+    // зачищаются в state, но поле для ввода не зачищается
     sendMessageElement.current.value = "";
   };
 

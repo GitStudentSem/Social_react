@@ -18,12 +18,7 @@ let state = {
   },
 
   dialogsPage: {
-    messages: [
-      { id: 1, message: "Простое сообщение 1" },
-      { id: 2, message: "Простое сообщение 2" },
-      { id: 3, message: "Простое сообщение 3" },
-      { id: 4, message: "Простое сообщение 4" },
-    ],
+    messages: [],
 
     dialogs: [
       { id: 1, name: "Сырн Творог" },
@@ -61,10 +56,10 @@ export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 };
-
+/////////////////////////////////////////
 export const sendMessage = () => {
   let newMessage = {
-    id: 5,
+    id: 888,
     message: state.dialogsPage.newMessageText,
   };
 

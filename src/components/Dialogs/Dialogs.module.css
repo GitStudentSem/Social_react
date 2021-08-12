@@ -1,21 +1,29 @@
 .dialogs_wrapper {
   display: flex;
+  height: 100%;
+}
+.dialog_window {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .line {
-  height: 500px;
   width: 3px;
   background-color: #fff;
-}
-.line {
   margin: 0 20px;
   box-shadow: 0 0 10px #fff;
 }
 .message_wrapper {
   width: 700px;
+  height: 600px;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
+
 .input_wrapper {
   width: 100%;
   display: flex;
+  margin-bottom: 40px;
 }
 .input {
   width: 100%;
