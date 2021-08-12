@@ -5,16 +5,19 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
   // Принимает на вход массив с данными posts и преобразует его в массив компонент Post
   // Каждый элемент массива имеет название p (сокр. от posts)
-  let postsElement = props.state.map((p) => (
+  let postsElement = props.posts.map((p) => (
     <Post message={p.message} likesCount={p.likesCount} />
   ));
 
   let newPostElement = React.createRef();
 
   let addPost = () => {
+    props.addPost();
+  };
+
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = "";
+    props.updateNewPostText(text);
   };
 
   return (
@@ -26,6 +29,8 @@ const MyPosts = (props) => {
             className={s.input}
             placeholder="input your message"
             ref={newPostElement}
+            onChange={onPostChange}
+            value={props.newPostText}
           />
           <button className={s.send} onClick={addPost}>
             Post
