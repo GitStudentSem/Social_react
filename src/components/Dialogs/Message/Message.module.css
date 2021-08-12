@@ -1,0 +1,29 @@
+.message {
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: max-content;
+}
+.message_user {
+  display: flex;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  max-width: 200px;
+  border: 2px solid #fff;
+}
+.avatar {
+  margin-right: 10px;
+}
+.name {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.message_text {
+  margin: 0;
+}

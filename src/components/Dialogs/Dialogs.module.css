@@ -6,58 +6,12 @@
   width: 3px;
   background-color: #fff;
 }
-.user {
-  display: flex;
-  padding: 5px 10px;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  max-width: 200px;
-  transition: all 0.5s;
-}
-.user:hover {
-  box-shadow: 0 0 10px #fff;
-}
-.active {
-  background-color: darkcyan;
-  box-shadow: 0 0 10px #fff;
-}
-.name {
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.avatar {
-  margin-right: 10px;
-}
 .line {
   margin: 0 20px;
   box-shadow: 0 0 10px #fff;
 }
 .message_wrapper {
   width: 700px;
-}
-.message {
-  border: 2px solid #fff;
-  border-radius: 20px;
-  padding: 10px;
-  margin-bottom: 20px;
-  width: max-content;
-}
-.message_user {
-  display: flex;
-  padding: 5px 10px;
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: 15px;
-  border-radius: 20px;
-  max-width: 200px;
-  border: 2px solid #fff;
-}
-.message_text {
-  margin: 0;
 }
 .input_wrapper {
   width: 100%;

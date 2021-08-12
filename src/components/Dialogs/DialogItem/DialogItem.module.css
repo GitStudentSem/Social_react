@@ -1,0 +1,26 @@
+.user {
+  display: flex;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  max-width: 200px;
+  transition: all 0.5s;
+}
+.user:hover {
+  box-shadow: 0 0 10px #fff;
+}
+.avatar {
+  margin-right: 10px;
+}
+.name {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.active {
+  background-color: darkcyan;
+  box-shadow: 0 0 10px #fff;
+}
