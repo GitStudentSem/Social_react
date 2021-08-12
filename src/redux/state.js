@@ -13,7 +13,7 @@ let state = {
       },
       { id: 4, message: "Какая-то запись на стене профиля", likesCount: 1177 },
     ],
-    newPostText: "asddd2",
+    newPostText: "",
   },
 
   dialogsPage: {
@@ -25,12 +25,13 @@ let state = {
     ],
 
     dialogs: [
-      { id: 1, name: "Сырный Творог" },
+      { id: 1, name: "Сырн Творог" },
       { id: 2, name: "Олег Гусин" },
       { id: 3, name: "Гусь Олегович" },
       { id: 4, name: "Самолет Боингов" },
       { id: 5, name: "Азимбег Мамбусабутов" },
     ],
+    newMessageText: "",
   },
   sidebar: {
     dialogs: [
@@ -42,8 +43,6 @@ let state = {
     ],
   },
 };
-
-window.state = state;
 
 export let addPost = () => {
   let newPost = {
@@ -59,6 +58,22 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+export let sendMessage = () => {
+  let newMessage = {
+    id: 5,
+    message: state.dialogsPage.newMessageText,
+  };
+
+  state.dialogsPage.messages.push(newMessage);
+  state.dialogsPage.newMessageText = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewMessageText = (newText) => {
+  state.dialogsPage.newMessageText = newText;
   rerenderEntireTree(state);
 };
 export default state;

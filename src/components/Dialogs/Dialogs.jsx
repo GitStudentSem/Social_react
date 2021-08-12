@@ -6,21 +6,28 @@ import Message from "./Message/Message";
 const Dialogs = (props) => {
   // Принимает на вход массив с данными dialogs и преобразует его в массив компонент dialogsElements
   // Каждый элемент массива имеет название d (сокр. от dialogs)
-  let dialogsElements = props.state.dialogs.map((d) => (
+  let dialogsElements = props.dialogsPage.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 
   // Принимает на вход массив с данными messages и преобразует его в массив компонент messagesElements
   // Каждый элемент массива имеет название m (сокр. от messages)
-  let messagesElements = props.state.messages.map((m) => (
+  let messagesElements = props.dialogsPage.messages.map((m) => (
     <Message message={m.message} />
   ));
 
   let sendMessageElement = React.createRef();
 
   let sendMessage = () => {
+    props.sendMessage();
+    // Костыльное решение, по какой-то причине данные
+    // зачищаются в state, но поле для ввода не зачищиется
+    sendMessageElement.current.value = "";
+  };
+
+  let onMessageChange = () => {
     let text = sendMessageElement.current.value;
-    alert(text);
+    props.updateNewMessageText(text);
   };
 
   return (
@@ -35,6 +42,8 @@ const Dialogs = (props) => {
             className={s.input}
             placeholder="input your message"
             ref={sendMessageElement}
+            onChange={onMessageChange}
+            value={props.newMessageText}
           />
           <button className={s.send} onClick={sendMessage}>
             Send

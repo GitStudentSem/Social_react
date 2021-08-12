@@ -25,7 +25,13 @@ const App = (props) => {
           {/* Route принимает 2 метода:  render и component через render можно передать props*/}
           <Route
             path="/dialogs"
-            render={() => <Dialogs state={props.state.dialogsPage} />}
+            render={() => (
+              <Dialogs
+                dialogsPage={props.state.dialogsPage}
+                sendMessage={props.sendMessage}
+                updateNewMessageText={props.updateNewMessageText}
+              />
+            )}
           />
           <Route
             path="/profile"
