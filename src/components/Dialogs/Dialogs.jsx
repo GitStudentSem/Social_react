@@ -19,7 +19,9 @@ const Dialogs = (props) => {
   let sendMessageElement = React.createRef();
 
   let sendMessage = () => {
-    props.sendMessage();
+    props.dispatch({
+      type: "SEND-MESSAGE",
+    });
     // Костыльное решение, по какой-то причине данные
     // зачищаются в state, но поле для ввода не зачищается
     sendMessageElement.current.value = "";
@@ -27,7 +29,10 @@ const Dialogs = (props) => {
 
   let onMessageChange = () => {
     let text = sendMessageElement.current.value;
-    props.updateNewMessageText(text);
+    props.dispatch({
+      type: "UPDATE-NEW-MESSAGE-TEXT",
+      newText: text,
+    });
   };
 
   return (
