@@ -1,10 +1,10 @@
 let initialState = {
   dialogs: [
-    { id: 113, name: "фывцфв" },
-    { id: 11, name: "asdas" },
-    { id: 12, name: "asdwad" },
-    { id: 41, name: "Сcsce" },
-    { id: 51, name: "Азимб" },
+    { id: 113, name: "Имельян Фамильев" },
+    { id: 11, name: "Мышкат Юсупов" },
+    { id: 12, name: "Суп Горохов" },
+    { id: 41, name: "Name юзеров" },
+    { id: 51, name: "Василис Обелисков" },
   ],
 };
 
