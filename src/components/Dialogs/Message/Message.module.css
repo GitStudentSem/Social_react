@@ -12,7 +12,7 @@
   text-decoration: none;
   margin-bottom: 15px;
   border-radius: 20px;
-  max-width: 200px;
+  width: min-content;
   border: 2px solid #fff;
 }
 .avatar {
