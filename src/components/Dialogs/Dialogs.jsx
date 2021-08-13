@@ -2,6 +2,10 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {
+  sendMessageActionCreator,
+  updateNewMessageTextActionCreator,
+} from "../../redux/state";
 
 const Dialogs = (props) => {
   // Принимает на вход массив с данными dialogs и преобразует его в массив компонент dialogsElements
@@ -19,9 +23,7 @@ const Dialogs = (props) => {
   let sendMessageElement = React.createRef();
 
   let sendMessage = () => {
-    props.dispatch({
-      type: "SEND-MESSAGE",
-    });
+    props.dispatch(sendMessageActionCreator());
     // Костыльное решение, по какой-то причине данные
     // зачищаются в state, но поле для ввода не зачищается
     sendMessageElement.current.value = "";
@@ -29,10 +31,7 @@ const Dialogs = (props) => {
 
   let onMessageChange = () => {
     let text = sendMessageElement.current.value;
-    props.dispatch({
-      type: "UPDATE-NEW-MESSAGE-TEXT",
-      newText: text,
-    });
+    props.dispatch(updateNewMessageTextActionCreator(text));
   };
 
   return (
