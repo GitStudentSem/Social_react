@@ -9,20 +9,25 @@ let initialState = {
     { id: 2, name: "Олег Гусин" },
     { id: 3, name: "Гусь Олегович" },
     { id: 4, name: "Самолет Боингов" },
-    { id: 5, name: "Азимбег Мамбусабутов" },
   ],
   newMessageBody: "",
 };
 export const dialogsReducer = (state = initialState, action) => {
+  // Копирование объекта state
   switch (action.type) {
     case SEND_MESSAGE:
       let body = state.newMessageBody;
-      state.newMessageBody = "";
-      state.messages.push({ id: 5, message: body });
-      return state;
+      return {
+        ...state,
+        newMessageBody: "",
+        messages: [...state.messages, { id: 5, message: body }],
+      };
+
     case UPDATE_NEW_MESSAGE_BODY:
-      state.newMessageBody = action.body;
-      return state;
+      return {
+        ...state,
+        newMessageBody: action.body,
+      };
     default:
       return state;
   }

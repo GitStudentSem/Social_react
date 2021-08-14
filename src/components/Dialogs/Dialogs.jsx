@@ -8,23 +8,23 @@ const Dialogs = (props) => {
   // Принимает на вход массив с данными dialogs и преобразует его в массив компонент dialogsElements
   // Каждый элемент массива имеет название d (сокр. от dialogs)
   let dialogsElements = state.dialogs.map((d) => (
-    <DialogItem name={d.name} id={d.id} />
+    <DialogItem name={d.name} id={d.id} key={d.id} />
   ));
 
   // Принимает на вход массив с данными messages и преобразует его в массив компонент messagesElements
   // Каждый элемент массива имеет название m (сокр. от messages)
   let messagesElements = state.messages.map((m) => (
-    <Message message={m.message} />
+    <Message message={m.message} key={m.id} />
   ));
 
   let newMessageBody = state.newMessageBody;
   let onSendMessageClick = () => {
-    props.sendMessageCreator();
+    props.sendMessage();
   };
 
   let onNewMessageChange = (e) => {
     let body = e.target.value;
-    props.updateNewMessageBodyCreator(body);
+    props.updateNewMessageBody(body);
   };
 
   return (
