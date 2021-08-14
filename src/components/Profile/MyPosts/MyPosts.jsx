@@ -12,7 +12,7 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let onAddPost = () => {
-    props.onAddPost();
+    props.addPost();
   };
 
   let onPostChange = () => {
