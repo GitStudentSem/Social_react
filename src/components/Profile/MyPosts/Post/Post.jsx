@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Post.module.css";
-import userAvatar from "./user.svg";
+import userAvatar from "../../../../assets/images/user.svg";
 const Post = (props) => {
   return (
     <div className={s.item}>

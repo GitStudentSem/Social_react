@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Message.module.css";
-import avatar from "./../user.svg";
+import avatar from "../../../assets/images/user.svg";
 
 const Message = (props) => {
   return (

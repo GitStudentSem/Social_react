@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Users.module.css";
-import avatar from "./user.svg";
+import avatar from "../../assets/images/user.svg";
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
