@@ -1,3 +1,4 @@
+const SET_DIALOGS = "SET-DIALOGS";
 let initialState = {
   dialogs: [
     { id: 113, name: "Имельян Фамильев" },
@@ -9,6 +10,13 @@ let initialState = {
 };
 
 const sidebarReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case SET_DIALOGS:
+      return { ...state, dialogs: [...state.dialogs, ...action.dialogs] };
+    default:
+      return state;
+  }
 };
+export const setDialogsAC = (dialogs) => ({ type: SET_DIALOGS, dialogs });
+
 export default sidebarReducer;

@@ -4,9 +4,9 @@ import s from "./Navbar.module.css";
 import RecentDialogs from "./recentDialogs/RecentDialogs";
 
 const Navbar = (props) => {
-  // let recentDialogsElements = props.state.dialogs.map((d) => (
-  //   <RecentDialogs name={d.name} id={d.id} />
-  // ));
+  let recentDialogsElements = props.dialogs.map((d) => (
+    <RecentDialogs name={d.name} id={d.id} />
+  ));
 
   return (
     <nav className={s.nav}>
@@ -41,7 +41,7 @@ const Navbar = (props) => {
         </NavLink>
       </div>
       <h3 className={s.title}>Recent Dialogues</h3>
-      {/* {recentDialogsElements} */}
+      {recentDialogsElements}
     </nav>
   );
 };

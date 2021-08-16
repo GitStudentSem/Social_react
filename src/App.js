@@ -11,6 +11,7 @@ import Profile from "./components/Profile/Profile";
 import { BrowserRouter, Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 
 const App = (props) => {
   return (
@@ -19,7 +20,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <NavbarContainer />
         <div className="app-wrapper-content">
           {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
             и импортировать его */}
