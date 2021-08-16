@@ -5,7 +5,7 @@ import RecentDialogs from "./recentDialogs/RecentDialogs";
 
 const Navbar = (props) => {
   let recentDialogsElements = props.dialogs.map((d) => (
-    <RecentDialogs name={d.name} id={d.id} />
+    <RecentDialogs key={d.id} name={d.name} id={d.id} />
   ));
 
   return (

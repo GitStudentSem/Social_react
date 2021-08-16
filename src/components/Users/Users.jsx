@@ -1,6 +1,7 @@
 import React from "react";
 import * as axios from "axios";
 import avatar from "./user.svg";
+import s from "./Users.module.css";
 
 let Users = (props) => {
   let getUsers = () => {
@@ -14,47 +15,47 @@ let Users = (props) => {
   };
 
   return (
-    <div>
+    <div className={s.users}>
       <button onClick={getUsers}>Get users</button>
       {props.users.map((u) => (
-        <div key={u.id}>
-          <span>
+        <div className={s.user} key={u.id}>
+          <div className={s.avatar_wrapper}>
             <div>
               <img
                 src={u.photos.small != null ? u.photos.small : avatar}
                 alt="avatar"
               />
             </div>
-            <div>
-              {u.followed ? (
-                <button
-                  onClick={() => {
-                    props.unfollow(u.id);
-                  }}
-                >
-                  unfollow
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    props.follow(u.id);
-                  }}
-                >
-                  Follow
-                </button>
-              )}
-            </div>
-          </span>
-          <span>
-            <span>
-              <div>{u.name}</div>
-              <div>{u.status}</div>
-            </span>
-            <span>
-              <div>{"u.location.country"}</div>
-              <div>{"u.location.city"}</div>
-            </span>
-          </span>
+
+            {u.followed ? (
+              <button
+                className={s.follow}
+                onClick={() => {
+                  props.unfollow(u.id);
+                }}
+              >
+                unfollow
+              </button>
+            ) : (
+              <button
+                className={s.follow}
+                onClick={() => {
+                  props.follow(u.id);
+                }}
+              >
+                Follow
+              </button>
+            )}
+          </div>
+          <div className={s.name_wrapper}>
+            <div>{u.name}</div>
+            {/* <div>{u.status}</div> */}
+            <div className={s.status}>asdwadadad</div>
+          </div>
+          <div className={s.location}>
+            <div>{"u.location.country"}</div>
+            <div>{"u.location.city"}</div>
+          </div>
         </div>
       ))}
     </div>

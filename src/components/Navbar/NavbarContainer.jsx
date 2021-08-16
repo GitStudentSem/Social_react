@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setDialogsAC } from "../../redux/sidebarReducer";
 import Navbar from "./Navbar";
 
 const mapStateToProps = (state) => {
@@ -9,11 +8,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUsers: (dialogs) => {
-      dispatch(setDialogsAC(dialogs));
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps)(Navbar);
