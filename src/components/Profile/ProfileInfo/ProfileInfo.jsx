@@ -1,7 +1,7 @@
 import React from "react";
 import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
-import avatar from "./user.svg";
+import avatar from "../../../assets/images/user.svg";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
