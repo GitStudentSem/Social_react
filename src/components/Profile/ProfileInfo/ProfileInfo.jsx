@@ -2,6 +2,7 @@ import React from "react";
 import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
 import avatar from "../../../assets/images/user.svg";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -10,7 +11,7 @@ const ProfileInfo = (props) => {
 
   return (
     <div>
-      <div className={s.image}></div>
+      {/* <div className={s.image}></div> */}
       <div className={s.user}>
         <img src={avatar} alt={"user avatar"} className={s.avatar} />
         <p className={s.name}>{props.profile.fullName}</p>
@@ -19,13 +20,8 @@ const ProfileInfo = (props) => {
         <ul>
           <li>{props.profile.contacts.github}</li>
           <li>{props.profile.contacts.vk}</li>
-          <li>{props.profile.contacts.facebook}</li>
-          <li>{props.profile.contacts.instagram}</li>
-          <li>{props.profile.contacts.twitter}</li>
-          <li>{props.profile.contacts.website}</li>
-          <li>{props.profile.contacts.youtube}</li>
-          <li>{props.profile.contacts.mainLink}</li>
         </ul>
+        <ProfileStatus status="Status sdad asdadw" />
       </div>
     </div>
   );
