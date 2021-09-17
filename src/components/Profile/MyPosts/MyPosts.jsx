@@ -1,4 +1,5 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -11,31 +12,14 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
 
-  let onAddPost = () => {
-    props.addPost();
-  };
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+  let onAddPost = (values) => {
+    props.addPost(values.newPostText);
   };
 
   return (
     <div className={s.content}>
       <div>
-        <div className={s.create_post}>
-          <input
-            type="text"
-            className={s.input}
-            placeholder="input your message"
-            ref={newPostElement}
-            onChange={onPostChange}
-            value={props.newPostText}
-          />
-          <button className={s.send} onClick={onAddPost}>
-            Post
-          </button>
-        </div>
+        <AddNewPostFormRedux onSubmit={onAddPost} />
         <div className={s.posts}>
           {/* Этот массив компонент строится через map из массива данных posts*/}
           {postsElement}
@@ -44,4 +28,20 @@ const MyPosts = (props) => {
     </div>
   );
 };
+const AddNewPostForm = (props) => {
+  return (
+    <form className={s.create_post} onSubmit={props.handleSubmit}>
+      <Field
+        component="input"
+        name="newPostText"
+        className={s.input}
+        placeholder="input your message"
+      />
+      <button className={s.send}>Post</button>
+    </form>
+  );
+};
+let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
+  AddNewPostForm
+);
 export default MyPosts;
