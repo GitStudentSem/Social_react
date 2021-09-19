@@ -1,7 +1,33 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import {
+  maxLengthCreator,
+  required,
+} from "../../../utils/validators/validators";
+import { Input } from "../../common/FormsControls/FormsControls";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+
+const maxLength10 = maxLengthCreator(10);
+
+const AddNewPostForm = (props) => {
+  return (
+    <form className={s.create_post} onSubmit={props.handleSubmit}>
+      <Field
+        component={Input}
+        name="newPostText"
+        className={s.input}
+        placeholder="input your message"
+        validate={[required, maxLength10]}
+      />
+      <button className={s.send}>Post</button>
+    </form>
+  );
+};
+
+let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
+  AddNewPostForm
+);
 
 const MyPosts = (props) => {
   // Принимает на вход массив с данными posts и преобразует его в массив компонент Post
@@ -28,20 +54,5 @@ const MyPosts = (props) => {
     </div>
   );
 };
-const AddNewPostForm = (props) => {
-  return (
-    <form className={s.create_post} onSubmit={props.handleSubmit}>
-      <Field
-        component="input"
-        name="newPostText"
-        className={s.input}
-        placeholder="input your message"
-      />
-      <button className={s.send}>Post</button>
-    </form>
-  );
-};
-let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
-  AddNewPostForm
-);
+
 export default MyPosts;
