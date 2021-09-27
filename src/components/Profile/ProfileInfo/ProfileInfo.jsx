@@ -3,6 +3,7 @@ import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
 import avatar from "../../../assets/images/user.svg";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusHooks from "./ProfileStatusHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -20,7 +21,7 @@ const ProfileInfo = (props) => {
           <li>{props.profile.contacts.github}</li>
           <li>{props.profile.contacts.vk}</li>
         </ul>
-        <ProfileStatus
+        <ProfileStatusHooks
           status={props.status}
           updateStatus={props.updateStatus}
         />
