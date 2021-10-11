@@ -32,7 +32,6 @@ let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
 const MyPosts = React.memo((props) => {
   // Принимает на вход массив с данными posts и преобразует его в массив компонент Post
   // Каждый элемент массива имеет название p (сокр. от posts)
-  console.log("render1");
   let postsElement = props.posts.map((p) => (
     <Post key={p.id} message={p.message} likesCount={p.likesCount} />
   ));

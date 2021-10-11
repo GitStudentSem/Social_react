@@ -3,11 +3,14 @@ import { profileAPI, usersAPI } from "../api/api";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const SET_STATUS = "SET-STATUS";
+const DELETE_POST = "DELETE-POST";
 
 let initialState = {
   posts: [
     { id: 1, message: "Первый комментарий", likesCount: 12 },
-    { id: 2, message: "Второй комментарий", likesCount: 0 },
+    { id: 2, message: "Второй комментарий", likesCount: 11 },
+    { id: 3, message: "Третий комментарий", likesCount: 10 },
+    { id: 4, message: "Четвертый комментарий", likesCount: 9 },
   ],
   profile: null,
   status: "",
@@ -30,6 +33,11 @@ const profileReducer = (state = initialState, action) => {
     case SET_STATUS: {
       return { ...state, status: action.status };
     }
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((p) => p.id != action.postId),
+      };
     default:
       return state;
   }
@@ -40,10 +48,8 @@ export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
-export const setStatus = (status) => ({
-  type: SET_STATUS,
-  status,
-});
+export const setStatus = (status) => ({ type: SET_STATUS, status });
+export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 
 export const getUserProfile = (userId) => (dispatch) => {
   usersAPI.getProfile(userId).then((response) => {
