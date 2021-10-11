@@ -26,8 +26,6 @@ export const initializedSuccess = () => ({
 
 export const initializeApp = () => (dispatch) => {
   let promise = dispatch(getAuthUserData());
-  // dispatch(somthungElse());
-  // dispatch(somthungElse());
   Promise.all([promise]).then(() => {
     dispatch(initializedSuccess());
   });

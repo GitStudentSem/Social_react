@@ -2,11 +2,10 @@ import React from "react";
 import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
 import avatar from "../../../assets/images/user.svg";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
+  if (!profile) {
     return <Preloader />;
   }
 
@@ -14,17 +13,14 @@ const ProfileInfo = (props) => {
     <div>
       <div className={s.user}>
         <img src={avatar} alt={"user avatar"} className={s.avatar} />
-        <p className={s.name}>{props.profile.fullName}</p>
-        <img src={props.profile.photos.large} alt={"user avatar"} />
+        <p className={s.name}>{profile.fullName}</p>
+        <img src={profile.photos.large} alt={"user avatar"} />
         <p>Как со мной связаться: </p>
         <ul>
-          <li>{props.profile.contacts.github}</li>
-          <li>{props.profile.contacts.vk}</li>
+          <li>{profile.contacts.github}</li>
+          <li>{profile.contacts.vk}</li>
         </ul>
-        <ProfileStatusHooks
-          status={props.status}
-          updateStatus={props.updateStatus}
-        />
+        <ProfileStatusHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>
   );
