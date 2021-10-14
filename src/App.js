@@ -7,16 +7,23 @@ import Settings from "./components/Settings/Settings";
 // Импорт компонент из react-router-dom не забыть сделать
 // необходимо установить пакет react-router-dom
 import { BrowserRouter, Route } from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginPage from "./components/Login/Login";
+
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/preloader/preloader";
+import { withSuspense } from "./HOC/withSuspense";
+const LoginPage = React.lazy(() => import("./components/Login/Login"));
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
+
 // import { withRouter } from "react-router-dom";
 
 class App extends Component {
@@ -28,9 +35,6 @@ class App extends Component {
       return <Preloader />;
     }
     return (
-      // BrowserRouter необходимая обертка для работы Router,
-      //необходимо установить пакет react-router-dom и импортировать его
-
       <div className="app-wrapper">
         <HeaderContainer />
         <NavbarContainer />
@@ -38,13 +42,16 @@ class App extends Component {
           {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
             и импортировать его */}
           {/* Route принимает 2 метода:  render и component через render можно передать props*/}
-          <Route path="/dialogs" render={() => <DialogsContainer />} />
-          <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-          <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+          <Route
+            path="/profile/:userId?"
+            render={withSuspense(ProfileContainer)}
+          />
+          <Route path="/users" render={withSuspense(UsersContainer)} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <LoginPage />} />
+          <Route path="/login" render={withSuspense(LoginPage)} />
         </div>
       </div>
     );
