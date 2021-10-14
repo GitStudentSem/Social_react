@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import store from "./redux/redux-store";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -12,7 +13,7 @@ import NavbarContainer from "./components/Navbar/NavbarContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/preloader/preloader";
@@ -29,27 +30,23 @@ class App extends Component {
     return (
       // BrowserRouter необходимая обертка для работы Router,
       //необходимо установить пакет react-router-dom и импортировать его
-      <BrowserRouter>
-        <div className="app-wrapper">
-          <HeaderContainer />
-          <NavbarContainer />
-          <div className="app-wrapper-content">
-            {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
+
+      <div className="app-wrapper">
+        <HeaderContainer />
+        <NavbarContainer />
+        <div className="app-wrapper-content">
+          {/* Роут для переключения между ссылками необходимо установить пакет react-router-dom
             и импортировать его */}
-            {/* Route принимает 2 метода:  render и component через render можно передать props*/}
-            <Route path="/dialogs" render={() => <DialogsContainer />} />
-            <Route
-              path="/profile/:userId?"
-              render={() => <ProfileContainer />}
-            />
-            <Route path="/users" render={() => <UsersContainer />} />
-            <Route path="/news" render={() => <News />} />
-            <Route path="/music" render={() => <Music />} />
-            <Route path="/settings" render={() => <Settings />} />
-            <Route path="/login" render={() => <LoginPage />} />
-          </div>
+          {/* Route принимает 2 метода:  render и component через render можно передать props*/}
+          <Route path="/dialogs" render={() => <DialogsContainer />} />
+          <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+          <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
+          <Route path="/login" render={() => <LoginPage />} />
         </div>
-      </BrowserRouter>
+      </div>
     );
   }
 }
@@ -57,4 +54,14 @@ class App extends Component {
 // export default compose(withRouter, connect(null, { getAuthUserData }))(App);
 // Вот так должно быть
 const mapStateToProps = (state) => ({ initialized: state.app.initialized });
-export default compose(connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose(connect(mapStateToProps, { initializeApp }))(App);
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+export default MainApp;
