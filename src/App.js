@@ -6,7 +6,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 // Импорт компонент из react-router-dom не забыть сделать
 // необходимо установить пакет react-router-dom
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, HashRouter } from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -64,11 +64,11 @@ const mapStateToProps = (state) => ({ initialized: state.app.initialized });
 let AppContainer = compose(connect(mapStateToProps, { initializeApp }))(App);
 const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default MainApp;
