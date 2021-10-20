@@ -4,17 +4,27 @@ import s from "./ProfileInfo.module.css";
 import avatar from "../../../assets/images/user.svg";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
   if (!profile) {
     return <Preloader />;
   }
 
+  const onMainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
+  };
+
   return (
     <div>
       <div className={s.user}>
-        <img src={avatar} alt={"user avatar"} className={s.avatar} />
         <p className={s.name}>{profile.fullName}</p>
-        <img src={profile.photos.large} alt={"user avatar"} />
+        <img
+          src={profile.photos.large || avatar}
+          alt={"user avatar"}
+          className={s.avatar}
+        />
+        {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
         <p>Как со мной связаться: </p>
         <ul>
           <li>{profile.contacts.github}</li>
